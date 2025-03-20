@@ -1,0 +1,43 @@
+    <Grid Margin="10">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!-- Title -->
+    <TextBlock Text="Welcome to WPF MVVM!"
+               FontSize="18" FontWeight="Bold"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,10"/>
+
+    <StackPanel>
+        <!-- Search Section -->
+        <Label Content="Search Phone" />
+        <!-- Search TextBox -->
+       <TextBox  Width="200"
+             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Button Content="Search" Command="{Binding SearchOrderCommand}" CommandParameter="{Binding SearchText}"/>
+
+
+        <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+        <TextBox Text="{Binding CustomerName, Mode=OneWay, ValidatesOnDataErrors=True}" IsReadOnly="True"/>
+        <TextBox Text="{Binding TotalAmount, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+        <TextBox Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+        <TextBox Text="{Binding ProductId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+
+      
+
+        <!-- Orders DataGrid -->
+
+        <DataGrid ItemsSource="{Binding Orders}"
+      SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"  
+      AutoGenerateColumns="True"
+      Height="150"/>
+
+
+        <Button Content="Add Order" Command="{Binding AddOrderCommand}" />
+        <Button Content="Remove Order" Command="{Binding RemoveOrderCommand}"/>
+
+    </StackPanel>
+</Grid>
