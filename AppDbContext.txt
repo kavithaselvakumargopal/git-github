@@ -1,4 +1,4 @@
-//first branch first file
+//first branch first file. Modified in firstbranch
 using Microsoft.EntityFrameworkCore;
 using ShoppingCart.Model;
 using System;
